@@ -1,0 +1,3106 @@
+#include<stdio.h>
+#include<GL/glut.h>
+
+int s=0,sk;
+//1 var
+float x=0;
+float y=0;
+float l=0;
+float h=175;
+float k=55;
+float i;
+//2 var
+float w=0,g=0,f=0;
+float p=54;
+float q=222;
+int n,m ;
+int j=0,o=0;
+//3 var
+int a=0;
+int b=-5;
+float z=0;//
+float c=103.0;
+float d=170.0;
+//intro funcs
+void circles()
+{
+	glPushMatrix();
+	glutSolidSphere(10,150,200);
+    glPopMatrix();
+}
+void rect()
+{
+	glPushMatrix();
+	glRectf(10,10,20,20);
+    glPopMatrix();
+}
+void conetree(){
+	glColor3f(1.0,0.2,0.0);
+	glPushMatrix();
+		glTranslatef(47,80,0);
+		glScalef(0.2,1+0.9,0.0);
+		rect();
+	glPopMatrix();
+	glColor3f(0.0,0.5,0.0);
+	glBegin(GL_POLYGON);
+	glVertex2i(50,140);
+	glVertex2i(45,120);
+	glVertex2i(55,120);
+	glEnd();
+	glPushMatrix();
+		glTranslatef(50,120,0);
+		glScalef(0.5,0.5,0);
+		circles();
+    glPopMatrix();
+}
+void wbody()
+{
+	glPushMatrix();
+    //glColor3f(1.0,0.5,0.0);
+    glColor4f(0.5,0.3,0.0,0.9);
+    glBegin(GL_POLYGON);
+    glVertex2i(15,100);
+	glVertex2i(35,100);
+	glVertex2i(40,40);
+	glVertex2i(10,40);
+    glEnd();
+    glPopMatrix();
+}
+void blades(){
+	glPushMatrix();
+       glColor3f(0.7,0.7,0.7);
+	   glBegin(GL_TRIANGLE_FAN);
+			glVertex2i(90,150);
+			glVertex2i(92,160);
+			glVertex2i(88,160);
+		glEnd();
+	     
+	  glPopMatrix();
+}
+
+void windmill0()
+{
+    //windmill
+    glPushMatrix();
+    glColor3f(0.9,0.3,0.0);
+    glTranslatef(80,152,0);
+    glScalef(0.45,0.45,0);
+    circles();
+      glPopMatrix();
+    glPushMatrix();
+    glColor3f(1.0,0.0,0.0);
+    glTranslatef(73,112,0);
+    glScalef(0.27,0.4,0);
+    wbody();
+      glPopMatrix();  
+      //blades
+      glPushMatrix();
+      glTranslatef(-73,-105,0);
+      glScalef(1+0.7,1+0.7,0);
+       blades();
+       glPopMatrix();
+    	glPushMatrix();
+       glColor3f(0.7,0.7,0.7);
+	   glBegin(GL_TRIANGLE_FAN);
+			glVertex2i(70,154);
+			glVertex2i(80,150);
+			glVertex2i(68,146);
+		glEnd();
+	     
+	  glPopMatrix();
+	  	glPushMatrix();
+       glColor3f(0.7,0.7,0.7);
+	   glBegin(GL_TRIANGLE_FAN);
+			glVertex2i(88,140);
+			glVertex2i(80,150);
+			glVertex2i(80,140);
+		glEnd();
+	     
+	  glPopMatrix();
+	  	glPushMatrix();
+       glColor3f(0.7,0.7,0.7);
+	   glBegin(GL_TRIANGLE_FAN);
+			glVertex2i(93,154);
+			glVertex2i(80,150);
+			glVertex2i(93,146);
+		glEnd();
+	     
+	  glPopMatrix();
+}
+void mountain(){
+	glPushMatrix();
+			glColor3f(1.0,0.5,0.0);
+		glBegin(GL_TRIANGLE_FAN);
+			glVertex2i(10,200);
+			glVertex2i(40,260);
+			glVertex2i(35,200);
+		glEnd();
+			glColor3f(1.0,0.9,0.3);
+		glBegin(GL_TRIANGLE_FAN);
+			glVertex2i(35,200);
+			glColor3f(1.0,0.6,0.0);
+			glVertex2i(40,260);
+			glVertex2i(80,200);
+		glEnd();
+			glPopMatrix();
+}
+
+//1 f
+void timer(int e){
+	x=x+0.5;
+	if(x<120){
+	glutPostRedisplay();
+	glutTimerFunc(40,timer,0);
+	}
+	else{
+		x=0;
+		glutPostRedisplay();
+		glutTimerFunc(100,timer,0);
+	}
+	
+}
+void timer1(int e){
+	y=y+0.5;
+	if(y<80){
+	glutPostRedisplay();
+	glutTimerFunc(100,timer1,0);
+	}
+	else{
+		y=0;
+		glutPostRedisplay();
+	glutTimerFunc(100,timer1,0);
+	}
+}
+void timer2(int e){
+	l=l+0.5;
+	if(l<3){
+	glutPostRedisplay();
+	glutTimerFunc(50,timer2,0);
+	}
+	else{
+		l=-10;
+		glutPostRedisplay();
+	glutTimerFunc(50,timer2,0);
+	}	
+}
+void rotate1(){
+	glTranslatef(h,k,0);
+	glRotatef(l,0,0,1);
+	glTranslatef(-h,-k,1);
+}
+
+void farmlayout(){
+//rod1
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(0.5,0.2,0.0);
+	glVertex2f(0,16);
+	glVertex2f(47,26);
+	glVertex2f(47,24);
+	glVertex2f(0,18);
+	glEnd();
+	glPopMatrix();
+    //rod2
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(0.5,0.2,0.0);
+	glVertex2f(0,16);
+	glVertex2f(12,2);
+	glVertex2f(12,1);
+	glVertex2f(0,18);
+	glEnd();
+	glPopMatrix();
+	//rod3 
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(0.5,0.2,0.0);
+	glVertex2f(12,2);
+	glVertex2f(62,10);
+	glVertex2f(62,12);
+	glVertex2f(12,1);
+	glEnd();
+	glPopMatrix();	
+	//rod4
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(0.5,0.2,0.0);
+	glVertex2f(62,10);
+	glVertex2f(47,26);
+	glVertex2f(47,24);
+	glVertex2f(62,12);
+	glEnd();
+	// inner 
+	glBegin(GL_POLYGON);
+		glColor3f(0.7,0.3,0.0);
+	glVertex2f(0,16);
+	glVertex2f(12,2);
+	glVertex2f(61,12);
+	glVertex2f(47,24);
+	glEnd();
+	
+	for(i=0;i<12;i+=1.5){
+		glColor3f(0.0,0.5,0.0);
+		glBegin(GL_POINTS);
+			glPointSize(2);
+		glVertex2f(5+i,15-i);
+		glEnd();
+	}
+	for(i=0;i<12;i+=1.5){
+		glColor3f(0.0,0.5,0.0);
+		glBegin(GL_POINTS);
+			glPointSize(2);
+		glVertex2f(10+i,16.5-i);
+		glEnd();
+	}
+	for(i=0;i<12;i+=1.5){
+		glColor3f(0.0,0.5,0.0);
+		glBegin(GL_POINTS);
+			glPointSize(2);
+		glVertex2f(15+i,17.5-i);
+		glEnd();
+	}
+	for(i=0;i<12;i+=1.5){
+		glColor3f(0.0,0.5,0.0);
+		glBegin(GL_POINTS);
+			glPointSize(2);
+		glVertex2f(20+i,18.5-i);
+		glEnd();
+	}
+	for(i=0;i<12;i+=1.5){
+		glColor3f(0.0,0.5,0.0);
+		glBegin(GL_POINTS);
+			glPointSize(2);
+		glVertex2f(25+i,19.5-i);
+		glEnd();
+	}
+	for(i=0;i<12;i+=1.5){
+		glColor3f(0.0,0.5,0.0);
+		glBegin(GL_POINTS);
+			glPointSize(2);
+		glVertex2f(35+i,20.5-i);
+		glEnd();
+	}
+	for(i=0;i<12;i+=1.5){
+		glColor3f(0.0,0.5,0.0);
+		glBegin(GL_POINTS);
+			glPointSize(2);
+		glVertex2f(40+i,21.5-i);
+		glEnd();
+	}
+	for(i=0;i<12;i+=1.5){
+		glColor3f(0.0,0.5,0.0);
+		glBegin(GL_POINTS);
+			glPointSize(2);
+		glVertex2f(45+i,22.5-i);
+		glEnd();
+	}	
+	glPopMatrix();
+}
+void busheslayout(){	
+//rod1
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(0.5,0.2,0.0);
+	glVertex2f(0,16);
+	glVertex2f(47,26);
+	glVertex2f(47,24);
+	glVertex2f(0,18);
+	glEnd();
+	glPopMatrix();
+    //rod2
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(0.5,0.2,0.0);
+	glVertex2f(0,16);
+	glVertex2f(12,2);
+	glVertex2f(12,1);
+	glVertex2f(0,18);
+	glEnd();
+	glPopMatrix();
+	//rod3
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(0.5,0.2,0.0);
+	glVertex2f(12,2);
+	glVertex2f(62,10);
+	glVertex2f(62,12);
+	glVertex2f(12,1);
+	glEnd();
+	glPopMatrix();	
+	//rod4
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(0.5,0.2,0.0);
+	glVertex2f(62,10);
+	glVertex2f(47,26);
+	glVertex2f(47,24);
+	glVertex2f(62,12);
+	glEnd();
+	// inner 
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+		glColor3f(0.25,0.5,0.0);
+	glVertex2f(0,16);
+	glVertex2f(12,2);
+	glVertex2f(61,12);
+	glVertex2f(47,24);
+	glEnd();
+	glPopMatrix(); 
+	//bushes
+	glPushMatrix();
+	glColor3f(.0,0.0,0.0);
+	glTranslatef(5,5,0);
+	glutSolidSphere(3,15,2);
+	glPopMatrix();		
+}
+    void tritree(){
+glPushMatrix();
+		glBegin(GL_POLYGON);
+		glColor3f(0.2,0.0,0.0);
+			glVertex2f(271.5,110);
+			glVertex2f(271.5,130);
+			glVertex2f(273.5,130);
+			glVertex2f(273.5,110);
+		glEnd();
+		//leaves
+		glColor3f(0.0,0.4,0.0);
+		glBegin(GL_POLYGON);
+			glVertex2f(263,130);
+			glVertex2f(282,130);
+			glVertex2f(273,145);
+		glEnd();
+			glColor3f(0.0,0.4,0.0);
+		glBegin(GL_POLYGON);
+			glVertex2f(265,135);
+			glVertex2f(280,135);
+			glVertex2f(273,148);
+		glEnd();
+		glBegin(GL_POLYGON);
+			glColor3f(0.1,0.4,0.0);
+			glVertex2f(267,140);
+			glVertex2f(278,140);
+			glVertex2f(273,153);
+		glEnd();
+		glPopMatrix();
+}
+void spheretree(){
+    //branch
+    glPushMatrix();
+    glColor3f(0.2,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex2i(172,25);
+    glVertex2i(172,50);
+    glVertex2i(178,50);
+    glColor3f(0.6,0.3,0.2);
+    glVertex2i(178,25);
+    glEnd();
+    glPopMatrix();
+    //leaves
+    glPushMatrix();
+    glColor3f(0.0,0.4,0.0);
+    rotate1();
+    glTranslatef(170,50,0);
+    circles();
+    glPopMatrix();
+    glPushMatrix();
+    glColor3f(0.2,0.4,0.0);
+    rotate1();
+    glTranslatef(175,60,0);
+    circles();
+    glPopMatrix();
+    glPushMatrix();
+    //rotate1();
+    glTranslatef(180,50,0);
+    circles();
+    glPopMatrix();
+    glPushMatrix();
+    glColor3f(1.0,0.0,0.0);
+    glPointSize(6);
+     glBegin(GL_POINTS);
+    glVertex2i(170,50);
+    glVertex2i(176,60);
+    glVertex2i(179,50);
+    glVertex2i(181,55);
+    glEnd();
+    glPopMatrix();
+}
+void human(){
+    //body
+    glPushMatrix();
+    glColor3f(1.0,0.25,0.5);
+    glBegin(GL_POLYGON);
+    glVertex2f(199,55);
+    glVertex2f(203,55);
+    glVertex2f(204,63);
+    glVertex2f(198,63);
+    glEnd();
+    //hand
+    glBegin(GL_POLYGON);
+    glColor3f(1.0,0.9,0.5);
+    glVertex2f(201,59);
+    glVertex2f(205,57);
+    glVertex2f(206,60);
+    glVertex2f(203,61.5);
+    glEnd();
+    //stick
+    glBegin(GL_LINES);
+    glColor3f(0.9,0.0,0.0);
+    glVertex2f(205,59);
+    glVertex2f(215,53);
+    glEnd();
+    //head
+    glColor3f(1.0,0.9,0.5);
+    glTranslatef(200.8,65,0);
+    glScalef(0.3,0.3,0.0);
+    circles();
+    glPopMatrix();
+    //hat
+	glPushMatrix();
+    glColor3f(1.0,0.5,0.0);
+    glTranslatef(200.8,68,0);
+    glScalef(0.5,0.2,0.0);
+    circles();
+    glPopMatrix();
+}
+void boat1(){ 
+	//lampshade
+/*	glPushMatrix();	
+		glColor3f(1.0,0.9,0.1);
+		glTranslatef(214,58,0);
+		glScalef(0.8,0.9,0);
+		circles();			
+	glPopMatrix();*/
+    glPushMatrix();
+    glColor3f(0.4,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex2f(190.0,45.0);
+    glVertex2f(200.0,35.0);
+    glVertex2f(210.0,40.0);
+    glVertex2f(215.0,60.0);
+    glEnd();
+    glPopMatrix();
+    glPushMatrix();
+    glColor3f(0.7,0.2,0.1);
+    glBegin(GL_TRIANGLES);
+    glVertex2f(190.0,45.0);
+    glVertex2f(215.0,60.0);
+    glVertex2f(202.0,56.0);
+    glEnd();
+    glPopMatrix();
+    glPushMatrix();
+    glLineWidth(3);
+    glBegin(GL_LINES);
+    glColor3f(0.0,0.0,0.0);
+    glVertex2i(210,57);
+    glVertex2i(206,75);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glColor3f(1.0,0.0,0.0);
+    glVertex2i(206,75);
+    glVertex2i(207,70);
+    glVertex2f(215,72.5);
+	glEnd();
+    glPopMatrix();
+  /*  //lamp
+    glPushMatrix();			
+		glBegin(GL_POLYGON);
+		glColor3f(1,0.5,0.2);
+			glVertex2f(212,65);
+			glVertex2f(210,63);		
+		glColor3f(1.0,0.2,0.0);
+			glVertex2f(210,61);	
+			glVertex2f(212,59);
+			glVertex2f(214,61);
+			glVertex2f(214,63);
+		glEnd();	
+	glPopMatrix();
+	glPushMatrix();
+		glLineWidth(2.0);
+		glColor3f(0.0,0.0,0.0);
+		glBegin(GL_LINES);
+			glVertex2f(212,65);
+			glVertex2f(213,62);
+		glEnd();
+		glBegin(GL_LINES);
+			glVertex2f(213,62);
+			glVertex2f(213,59);
+		glEnd();
+	glPopMatrix();*/	
+}
+void boat(){ 
+	//lampshade
+/*	glPushMatrix();	
+		glColor3f(1.0,0.9,0.1);
+		glTranslatef(214,58,0);
+		glScalef(0.8,0.9,0);
+		circles();			
+	glPopMatrix();*/
+    glPushMatrix();
+    glColor3f(0.4,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex2f(190.0,45.0);
+    glVertex2f(200.0,35.0);
+    glVertex2f(210.0,40.0);
+    glVertex2f(215.0,60.0);
+    glEnd();
+    glPopMatrix();
+    glPushMatrix();
+    glColor3f(0.7,0.2,0.1);
+    glBegin(GL_TRIANGLES);
+    glVertex2f(190.0,45.0);
+    glVertex2f(215.0,60.0);
+    glVertex2f(202.0,56.0);
+    glEnd();
+    glPopMatrix();
+    glPushMatrix();
+    glLineWidth(3);
+    glBegin(GL_LINES);
+    glColor3f(0.0,0.0,0.0);
+    glVertex2i(210,57);
+    glVertex2i(206,75);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glColor3f(1.0,0.0,0.0);
+    glVertex2i(206,75);
+    glVertex2i(207,70);
+    glVertex2f(215,72.5);
+	glEnd();
+    glPopMatrix();
+    //lamp
+    glPushMatrix();			
+		glBegin(GL_POLYGON);
+		glColor3f(1,0.5,0.2);
+			glVertex2f(212,65);
+			glVertex2f(210,63);		
+		glColor3f(1.0,0.2,0.0);
+			glVertex2f(210,61);	
+			glVertex2f(212,59);
+			glVertex2f(214,61);
+			glVertex2f(214,63);
+		glEnd();	
+	glPopMatrix();
+	glPushMatrix();
+		glLineWidth(2.0);
+		glColor3f(0.0,0.0,0.0);
+		glBegin(GL_LINES);
+			glVertex2f(212,65);
+			glVertex2f(213,62);
+		glEnd();
+		glBegin(GL_LINES);
+			glVertex2f(213,62);
+			glVertex2f(213,59);
+		glEnd();
+	glPopMatrix();	
+}
+void river(){   
+	glPushMatrix();
+    glTranslatef(154+y,1+y,0);
+    glColor3f(0.0,0.4,0.6);
+	glutSolidSphere(5,150,200);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(155+y,2+y,0);
+	glColor3f(0.0,.5,0.6);
+	glutSolidSphere(5,150,200);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(156+y,3+y,0);
+	glColor3f(0.0,.5,0.6);
+	glutSolidSphere(5,150,200);
+    glPopMatrix();
+}
+void flow(){
+	glPushMatrix();
+    river();
+    glTranslatef(10,-1,0);
+    river();
+    glTranslatef(13,-2,0);
+    river();
+    glTranslatef(16,-3,0);
+    river();
+    glTranslatef(19,-4,0);
+    river();
+    glTranslatef(22,-5,0);
+    river();
+    glTranslatef(25,-6,0);
+    river();
+    glTranslatef(28,-7,0);
+    river();
+    glTranslatef(31,-8,0);
+    river();
+    glPopMatrix();
+}
+void house(){
+	glPushMatrix();
+		//rec red
+		glPushMatrix();
+		glBegin(GL_POLYGON);
+			glColor3f(0.6,0.3,0.0);
+			glVertex2i(10,10);
+			glVertex2i(10,20);
+			glVertex2i(20,20);
+			glVertex2i(20,10);
+		glEnd();
+		glPopMatrix();
+		//front face
+		glPushMatrix();
+		glBegin(GL_POLYGON);
+			glColor3f(0.6,0.2,0.0);
+			glVertex2i(20,10);
+			glVertex2i(20,20);
+			glVertex2i(35,25);
+			glVertex2i(35,15);
+		glEnd();
+		glPopMatrix();
+		//roof
+		glPushMatrix();
+		glBegin(GL_POLYGON);
+			glColor3f(0.4,0.0,0.0);
+			glVertex2i(15,30);
+			glVertex2i(30,35);
+			glVertex2i(35,25);
+			glVertex2i(20,20);
+		glEnd();
+		glPopMatrix();		
+		glPushMatrix();
+		glBegin(GL_TRIANGLES);
+			glColor3f(0.5,0.0,0.0);
+			glVertex2i(10,20);
+			glVertex2i(15,30);
+			glVertex2i(20,20);
+		glEnd();
+		glPopMatrix();
+		//door
+		glPushMatrix();
+		glBegin(GL_POLYGON);
+			glColor3f(0.0,0.0,0.0);
+			glVertex2i(26,12);
+			glVertex2i(26,19);
+			glColor3f(0.15,0.15,0.15);
+			glVertex2f(31,20.5);
+			glVertex2f(31,13.7);
+		glEnd();
+		glPopMatrix();
+		//window
+		glPushMatrix();
+		glBegin(GL_POLYGON);
+			glColor3f(0.1,0.1,0.1);
+			glVertex2i(12,12);
+			glVertex2i(18,12);
+			glColor3f(0.15,0.15,0.15);
+			glVertex2i(18,18);
+			glVertex2i(12,18);
+		glEnd();
+	glPopMatrix();
+}
+//2 f
+void key1(unsigned char key1,int x,int y){	
+	if(key1=='1')	{n=1;}
+	else if(key1=='2')	{n=2;}
+	else if(key1=='3')	{n=3;}
+	else if(key1=='4')	{n=4;}
+	else if(key1=='5')	{n=5;}
+	else if(key1=='6')	{n=6;}
+	else if(key1=='7')	{n=7;}
+	else if(key1=='8')	{n=8;}
+	else if(key1=='9')	{n=9;}
+	else if(key1=='z')	{n=10;}
+	else if(key1=='y')	{n=11;}
+	else if(key1=='x')	{n=12;}
+	else if(key1==13)	{m=m+1;}	
+	if(key1=='a' ||key1=='A'){b=5;}
+	else if(key1=='c' ||key1=='C'){b=-5;}
+//	if(key1=='0'){exit(0);}
+	glutPostRedisplay();	
+}
+void rotatewings(){
+	glTranslatef(p,q,0);
+	glRotatef(w,1,0,0);
+	glTranslatef(-p,-q,0);
+}
+void rtimer(int e){
+	w=w+3;
+	if(w<=90){
+	glutPostRedisplay();
+	glutTimerFunc(100,rtimer,0);
+	}
+	else{
+		w=0;
+		glutPostRedisplay();
+	glutTimerFunc(100,rtimer,0);
+	}	
+}
+void working(){
+	if(m==1){	
+		char t1[]="step1 -Rotating generator converts kinetic energy of the wind into electrical energy.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(150,100,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%85==0 && i!=0){
+						o=o+1;
+						glRasterPos3i(150,100-(10*o),0);						
+					}
+				}
+			o=0;			
+	}	
+	else if(m==2){
+		char t1[]="step2 -Transformer increases voltage for transmission to substation.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(150,100,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%85==0 && i!=0){
+						o=o+1;
+						glRasterPos3i(150,100-(10*o),0);						
+					}
+				}
+			o=0;		
+	}
+	else if(m==3){
+		char t1[]="step3 -Substation increases the electricity voltage for transmission over long        distances.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(150,100,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%85==0 && i!=0){
+						o=o+1;
+						glRasterPos3i(163,100-(10*o),0);						
+					}
+				}
+			o=0;	
+	}
+	else if(m==4){   
+		char t1[]="step4 -Transmission of the electricity to local electricity distribution companies,   where it is delivered to homes, businesses, farms, etc.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(150,100,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%85==0 && i!=0){
+						o=o+1;
+						glRasterPos3i(163,100-(10*o),0);						
+					}
+				}
+			o=0;	
+	}
+	else if(m==5){
+		m=0;
+	}
+//glFlush();	
+}
+void wingsrf(){
+	glPushMatrix();
+	   	glColor3f(0.7,0.7,0.7);
+		glBegin(GL_POLYGON);
+		glVertex2f(55,212);
+		glVertex2f(58,212);
+		glVertex2f(57,140);
+		glVertex2f(56,140);
+		glEnd();
+	glPopMatrix();
+	
+	glPushMatrix();
+		glTranslatef(p,q,0);
+		glRotatef(-90,1,0,0);
+		glTranslatef(-p,-q,0);
+		glBegin(GL_POLYGON);
+		glVertex2f(55,232);
+		glVertex2f(58,232);
+		glVertex2f(57,299);
+		glVertex2f(56,299);
+		glEnd();
+	glPopMatrix();
+}
+void wingsrb(){
+	glPushMatrix();
+	   	glColor3f(0.7,0.7,0.7);
+		glBegin(GL_POLYGON);
+		glVertex2f(55,212);
+		glVertex2f(58,212);
+		glVertex2f(57,140);
+		glVertex2f(56,140);
+		glEnd();
+	glPopMatrix();
+	
+	glPushMatrix();
+		glTranslatef(p,q,0);
+		glRotatef(-90,1,0,0);
+		glTranslatef(-p,-q,0);
+		glBegin(GL_POLYGON);
+		glVertex2f(55,232);
+		glVertex2f(58,232);
+		glVertex2f(57,299);
+		glVertex2f(56,299);
+		glEnd();
+	glPopMatrix();
+}
+void sphere(){
+	glutSolidSphere(100,150,200);
+}
+void transformer(){
+		glPushMatrix();
+			glColor3ub(68,68,68);
+	   		glTranslatef(103,83,0);
+	   		glScalef(0.15,0.05,0);
+	   		sphere();
+	   	glPopMatrix();
+		glPushMatrix();
+	   		glColor3ub(7,107,27);
+			glBegin(GL_POLYGON);
+			glVertex2f(115,80);
+			glVertex2f(95,80);
+			glVertex2f(95,105);
+			glVertex2f(115,105);
+			glEnd();
+	   	glPopMatrix();
+	   	//
+	   	glPushMatrix();
+	   		glColor3ub(186,250,199);
+			glBegin(GL_POLYGON);
+			glVertex2f(113.5,82);
+			glVertex2f(96.5,82);
+			glVertex2f(96.5,103);
+			glVertex2f(113.5,103);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   		glColor3ub(186,250,199);
+			glBegin(GL_POLYGON);
+			glVertex2f(91,83);
+			glVertex2f(95,80);
+			glVertex2f(95,105);
+			glVertex2f(91,108);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   		glColor3ub(7,95,24);
+			glBegin(GL_POLYGON);
+			glVertex2f(91,108);
+			glVertex2f(95,105);
+			glVertex2f(115,105);
+			glVertex2f(110,108);
+			glEnd();
+	   	glPopMatrix();	   	
+}
+void tower(){
+	glPushMatrix();
+			glColor3ub(58,78,58);
+	   		glTranslatef(215,146,0);
+	   		glScalef(0.07,0.04,0);
+	   		sphere();
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   		glLineWidth(2.0);
+	   		glColor3ub(10,10,10);
+			glBegin(GL_TRIANGLES);
+				glVertex2f(211,145);
+				glVertex2f(212,155);
+				glVertex2f(215,155);
+			glEnd();
+			glBegin(GL_TRIANGLES);
+				glVertex2f(215,155);
+				glVertex2f(218,155);
+				glVertex2f(219,145);
+			glEnd();			
+			glBegin(GL_POLYGON);
+			glVertex2f(215,158);
+			glVertex2f(212,155);
+			glVertex2f(212.5,161);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex2f(215,158);
+			glVertex2f(217.5,161);
+			glVertex2f(218,155);
+			glEnd();
+			
+			glBegin(GL_POLYGON);
+			glVertex2f(212.5,161);
+			glVertex2f(211.5,169);
+			glVertex2f(215,161);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex2f(215,161);
+			glVertex2f(218,169);
+			glVertex2f(217.5,161);
+			glEnd();
+			
+			glBegin(GL_POLYGON);
+			glVertex2f(211.5,169);
+			glVertex2f(211,179);
+			glVertex2f(215,173);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex2f(214.5,173);
+			glVertex2f(218,179);
+			glVertex2f(218,169);
+			glEnd();
+	   	glPopMatrix();	   	
+	   	glPushMatrix();
+	   		glLineWidth(4.0);
+	   		glBegin(GL_LINES);
+				glVertex2f(209,174);
+				glVertex2f(220,174);
+			glEnd();
+			glLineWidth(3.0);
+	   		glBegin(GL_LINES);
+				glVertex2f(211.5,169);
+				glVertex2f(218,169);
+				
+				glVertex2f(212.5,161);
+				glVertex2f(217.5,161);
+			glEnd();
+	   	glPopMatrix();
+}
+
+void wm(){
+	glColor3f(0.0,0.0,0.0);
+		glPushMatrix();
+			glTranslatef(p,q,0);
+			glRotatef(-180,1,0,0);
+			glTranslatef(-p,-q,0);
+	   		rotatewings();
+			wingsrb();
+	   	glPopMatrix();
+		//tower
+		glPushMatrix();
+			glBegin(GL_POLYGON);
+			glColor3f(0.7,0.7,0.7);
+			glVertex2f(72,50);
+			glColor3f(0.8,0.8,0.8);
+			glVertex2f(78,50);
+			glVertex2f(78,210);
+			glColor3f(0.7,0.7,0.7);
+			glVertex2f(72,210);
+			glEnd();
+	   	glPopMatrix();	   	
+	   	//pivoting system
+	   	glPushMatrix();
+	   		glColor3f(0.0,0.0,0.0);
+			glBegin(GL_POLYGON);
+			glVertex2f(70,210);
+			glVertex2f(80,210);
+			glVertex2f(80,217);
+			glVertex2f(70,215);
+			glEnd();
+	   	glPopMatrix();
+	   	//upperpart
+	   	glPushMatrix();
+	   		glColor3f(0.7,0.7,0.7);
+			glBegin(GL_POLYGON);
+			glVertex2f(58,212);
+			glVertex2f(100,214);
+			glVertex2f(100,230);
+			glVertex2f(58,232);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   		glColor3f(0.0,0.0,0.0);
+			glRectf(58,212,55,232);
+		glPopMatrix();
+		glPushMatrix();
+	   		glColor3f(0.7,0.7,0.7);
+			glBegin(GL_POLYGON);
+			glVertex2f(55,212);
+			glVertex2f(50,220);
+			glVertex2f(50,224);
+			glVertex2f(55,232);
+			glEnd();
+	   	glPopMatrix();
+		//wings
+		glPushMatrix();
+	   		rotatewings();
+			wingsrf();
+	   	glPopMatrix();
+	   	
+	   	//transformer
+	   	glPushMatrix();
+	   		glTranslatef(0,-19,0);
+	   		glScalef(0.9,0.9,0);
+	   		transformer();
+	   	glPopMatrix();
+	   	
+	   	//
+	   	glPushMatrix();
+	  // 	glLineWidth(5.0);
+	   		glColor3ub(255,0,0);
+		glBegin(GL_LINES);
+			glVertex2f(78,60);
+			glVertex2f(84,60);
+			glEnd();
+	   	glPopMatrix();
+}
+void buildings(){
+	glPushMatrix();
+	   		glColor3ub(0,0,0);
+			glBegin(GL_POLYGON);
+			glVertex2f(260,190);
+			glVertex2f(260,220);
+			glVertex2f(263,220);
+			glVertex2f(263,190);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+			glBegin(GL_POLYGON);
+			glVertex2f(267,190);
+			glVertex2f(267,215);
+			glVertex2f(263,215);
+			glVertex2f(263,190);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+			glBegin(GL_POLYGON);
+			glVertex2f(267,190);
+			glVertex2f(267,199);
+			glVertex2f(269,199);
+			glVertex2f(269,190);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+			glBegin(GL_POLYGON);
+			glVertex2f(269,190);
+			glVertex2f(269,210);
+			glVertex2f(272,210);
+			glVertex2f(272,190);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+			glBegin(GL_POLYGON);
+			glVertex2f(272,190);
+			glVertex2f(272,230);
+			glVertex2f(276,230);
+			glVertex2f(276,190);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+			glBegin(GL_POLYGON);
+			glVertex2f(276.5,190);
+			glVertex2f(276.5,218);
+			glVertex2f(282,218);
+			glVertex2f(282,190);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+			glBegin(GL_POLYGON);
+			glVertex2f(282,190);
+			glVertex2f(282,228);
+			glVertex2f(289,228);
+			glVertex2f(289,190);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+			glBegin(GL_POLYGON);
+			glVertex2f(289.5,190);
+			glVertex2f(289.5,216);
+			glVertex2f(296,216);
+			glVertex2f(296,190);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+			glBegin(GL_POLYGON);
+			glVertex2f(296.5,190);
+			glVertex2f(296.5,210);
+			glVertex2f(300,210);
+			glVertex2f(300,190);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+			glBegin(GL_POLYGON);
+			glVertex2f(270,190);
+			glVertex2f(280,200);
+			glVertex2f(300,200);
+			glVertex2f(300,190);
+			glEnd();
+	   	glPopMatrix();
+}
+void substation(){
+	glPushMatrix();
+			glColor3ub(28,28,28);
+	   		glTranslatef(173,128,0);
+	   		glScalef(0.15,0.05,0);
+	   		sphere();
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   		glLineWidth(5.0);
+	   		glColor3ub(56,56,56);
+			glBegin(GL_LINE_LOOP);
+				glVertex2f(160,130);
+				glVertex2f(160,160);
+				glVertex2f(180,170);
+				glVertex2f(180,125);
+			glEnd();
+			glLineWidth(5.0);
+			glBegin(GL_LINE_LOOP);
+				glVertex2f(166,128.5);
+				glVertex2f(166,163);
+				glVertex2f(172,166);
+				glVertex2f(172,127);
+			glEnd();
+			glLineWidth(4.0);
+			glBegin(GL_LINE_LOOP);
+				glVertex2f(160,130);
+				glVertex2f(160,160);
+				glVertex2f(164,157);
+				glVertex2f(164,130);				
+			glEnd();
+			glBegin(GL_LINES);
+				glVertex2f(164,157);
+				glVertex2f(185,165);				
+			glEnd();
+			glBegin(GL_LINE_LOOP);
+				glVertex2f(180,170);
+				glVertex2f(180,125);
+				glVertex2f(185,127);
+				glVertex2f(185,166);				
+			glEnd();
+			glLineWidth(1.0);
+			glBegin(GL_LINE_LOOP);
+				glVertex2f(160,157);
+				glVertex2f(160,153);
+				glVertex2f(180,160);
+				glVertex2f(180,167);				
+			glEnd();
+			glBegin(GL_LINE_LOOP);
+				glVertex2f(185,157);
+				glVertex2f(185,153);
+				glVertex2f(180,160);
+				glVertex2f(180,167);				
+			glEnd();
+			
+			glBegin(GL_LINES);
+				glVertex2f(160,149);
+				glVertex2f(180,154);
+				glVertex2f(180,154);
+				glVertex2f(185,149);				
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   	glLineWidth(2.0);
+	   		glBegin(GL_LINES);
+				glVertex2f(160,145);
+				glVertex2f(166,146);
+				glVertex2f(166,147);
+				glVertex2f(172,148);
+				glVertex2f(172,148.5);
+				glVertex2f(180,149);
+				glVertex2f(180,150);
+				glVertex2f(185,148);				
+			glEnd();
+	   	glPopMatrix();	   	
+	   	glPushMatrix();
+	   		glColor3ub(0,0,0);
+			glBegin(GL_POLYGON);
+			glVertex2f(161,143);
+			glVertex2f(161,130);
+			glVertex2f(165,130.5);
+			glVertex2f(165,143.5);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex2f(167,144);
+			glVertex2f(167,129);
+			glVertex2f(171,129.5);
+			glVertex2f(171,145);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex2f(173,145);
+			glVertex2f(173,128);
+			glVertex2f(178,129);
+			glVertex2f(178,146);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex2f(180,145);
+			glVertex2f(180,126);
+			glVertex2f(184,127);
+			glVertex2f(184,146);
+			glEnd();
+	   	glPopMatrix();
+	   	//WIRES
+	   	glPushMatrix();
+	   		glLineWidth(1.0);
+	   		glBegin(GL_LINES);
+				glVertex2f(160,150);
+				glVertex2f(164,146);
+				
+				glVertex2f(164,146);
+				glVertex2f(168,151);
+				
+				glVertex2f(168,151);
+				glVertex2f(172,147);
+				
+				glVertex2f(172,147);
+				glVertex2f(173,152);
+				
+				glVertex2f(173,152);
+				glVertex2f(175,148);
+				
+				glVertex2f(175,148);
+				glVertex2f(177,153);
+				
+				glVertex2f(177,153);
+				glVertex2f(180,156);
+								
+			glEnd();
+			glBegin(GL_LINES);
+				glVertex2f(160,160);
+				glVertex2f(164,156);
+				
+				glVertex2f(164,156);
+				glVertex2f(168,161);
+				
+				glVertex2f(168,161);
+				glVertex2f(172,157);
+				
+				glVertex2f(172,157);
+				glVertex2f(173,162);
+				
+				glVertex2f(173,162);
+				glVertex2f(175,158);
+				
+				glVertex2f(175,158);
+				glVertex2f(177,163);
+				
+				glVertex2f(177,153);
+				glVertex2f(180,156);
+				
+				glVertex2f(180,156);
+				glVertex2f(180,144);
+				glVertex2f(162,160);
+				glVertex2f(162,142);
+				glVertex2f(174,159);
+				glVertex2f(174,142);
+				
+				glVertex2f(172,160);
+				glVertex2f(180,135);
+				glVertex2f(170,160);
+				glVertex2f(178,138);
+				
+				glVertex2f(178,132);
+				glVertex2f(178,162);
+				glVertex2f(179,132);
+				glVertex2f(179,162);
+				
+				glVertex2f(164,132);
+				glVertex2f(164,158);
+				glVertex2f(162,132);
+				glVertex2f(162,157);				
+			glEnd();
+	   	glPopMatrix();
+}
+void parts(){
+	//low-speed-shaft
+	   	glPushMatrix();
+	   //	rotatewings();
+	   	glColor3ub(100,100,100);
+			glBegin(GL_POLYGON);
+			glVertex2f(58,216);	
+			glVertex2f(58,228);
+			glVertex2f(69,224);
+			glVertex2f(69,220);
+			glEnd();
+	   	glPopMatrix();	
+	   	//gearbox
+	   	glPushMatrix();
+	   		glColor3ub(225,165,64);
+			glBegin(GL_POLYGON);
+			glVertex2f(69,215);
+			glVertex2f(69,229);
+			glVertex2f(77,229);
+			glVertex2f(77,215);
+			glEnd();
+	   	glPopMatrix();
+	   	//high-speed-shaft
+	   	glPushMatrix();
+	   		glColor3ub(0,0,0);
+			glBegin(GL_POLYGON);
+			glVertex2f(77,223);
+			glVertex2f(77,225);
+			glVertex2f(82,225);
+			glVertex2f(82,223);
+			glEnd();
+	   	glPopMatrix();
+	   	//genrator
+	   	glPushMatrix();
+	   		glColor3ub(225,165,64);
+			glBegin(GL_POLYGON);
+			glVertex2f(82,217);
+			glVertex2f(82,229);
+			glVertex2f(95,229);
+			glVertex2f(95,217);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   		glColor3ub(5,65,64);
+			glBegin(GL_POLYGON);
+			glVertex2f(97,217);
+			glVertex2f(95,217);
+			glVertex2f(95,229);
+			glVertex2f(97,229);
+			glEnd();
+	   	glPopMatrix();
+	   	//wiresfrom-gen
+	   	glPushMatrix();
+	   	glLineWidth(5.0);
+	   		glColor3ub(255,0,0);
+			glBegin(GL_LINES);
+			glVertex2f(82,217);
+			glVertex2f(76,210);
+			
+			glVertex2f(76,210.5);
+			glVertex2f(76,60);
+			
+			glVertex2f(76,60);
+			glVertex2f(84,60);
+			glEnd();
+	   	glPopMatrix();
+	   	//windvane
+	    glPushMatrix();	   	
+	   		glColor3f(0,0,0);
+	   		glLineWidth(3.0);
+	   		glBegin(GL_LINES);	   		
+			glVertex2f(96,230.5);
+			glVertex2f(96,238);
+			glEnd();
+			
+			glLineWidth(2.0);
+			glBegin(GL_LINES);
+			glVertex2f(92,238);
+			glVertex2f(100,238);
+			
+			glVertex2f(92,238);
+			glVertex2f(92,246);
+			
+			glVertex2f(90,246);
+			glVertex2f(94,246);
+			
+			glVertex2f(100,238);
+			glVertex2f(100,242);
+			
+			glVertex2f(98,242);
+			glVertex2f(102,242);
+			glEnd();
+			
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   		glBegin(GL_TRIANGLES);
+			glVertex2f(96,242);
+			glVertex2f(98,240);
+			glVertex2f(98,244);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   		glBegin(GL_POLYGON);
+			glVertex2f(102,241);
+			glVertex2f(102,243);
+			glVertex2f(104.5,244);
+			glVertex2f(104.5,240);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   		glTranslatef(90,246,0);
+			glScalef(0.01,0.02,0);
+	   		sphere();
+	   		
+	   	glPopMatrix();
+	   	glPushMatrix();
+		   	glTranslatef(94,246,0);
+		   	glScalef(0.01,0.02,0);
+		   	sphere();
+	   	glPopMatrix();
+	   	char p5[]="5-WIND VANE & ANEMOMETER";
+			glColor3ub(0,0,0);
+			glRasterPos3i(105,240,0);
+	  	for (int i = 0; i < strlen(p5); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p5[i]);
+	  	}
+	  	char p4[]="4-YAW SYSTEM";
+			glColor3ub(0,0,0);
+			glRasterPos3i(81,190,0);
+	  	for (int i = 0; i < strlen(p4); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p4[i]);
+	  	}
+	  	char p6[]="6-GENERATOR";
+			glColor3ub(0,0,0);
+			glRasterPos3i(85,260,0);
+	  	for (int i = 0; i < strlen(p6); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p6[i]);
+	  	}
+	  	char p7[]="7-GEARBOX";
+			glColor3ub(0,0,0);
+			glRasterPos3i(65,240,0);
+	  	for (int i = 0; i < strlen(p7); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p7[i]);
+	  	}
+	  	char p8[]="8-LOW-SPEED SHAFT";
+			glColor3ub(0,0,0);
+			glRasterPos3i(60,250,0);
+	  	for (int i = 0; i < strlen(p8); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p8[i]);
+	  	}
+	  	char p9[]="y-ROTOR BLADE";
+			glColor3ub(0,0,0);
+			glRasterPos3i(30,260,0);
+	  	for (int i = 0; i < strlen(p9); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p9[i]);
+	  	}
+	  	char p10[]="z-ROTOR HUB";
+			glColor3ub(0,0,0);
+			glRasterPos3i(30,220,0);
+	  	for (int i = 0; i < strlen(p10); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p10[i]);
+	  	}
+	  	char p11[]="9-HIGH-SPEED SHAFT";
+			glColor3ub(0,0,0);
+			glRasterPos3i(65,270,0);
+	  	for (int i = 0; i < strlen(p11); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p11[i]);
+	  	}
+	  	char p12[]="x-NACELLE";
+			glColor3ub(0,0,0);
+			glRasterPos3i(85,200,0);
+	  	for (int i = 0; i < strlen(p12); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p12[i]);
+	  	}
+	  	char s[]="SUBSTATION";
+			glColor3ub(0,0,0);
+			glRasterPos3i(165,110,0);
+	  	for (int i = 0; i < strlen(s); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , s[i]);
+	  	}
+		//
+		glPushMatrix();	  
+		glLineWidth(1.0);			
+	   	glColor3f(0,0,0);
+			glBegin(GL_LINES);								
+				glVertex2f(50,260);
+				glVertex2f(56,260);				
+			glEnd();
+			glBegin(GL_LINES);								
+				glVertex2f(48,222);
+				glVertex2f(51,222);				
+			glEnd();
+			glBegin(GL_LINES);								
+				glVertex2f(63,222);
+				glVertex2f(63,247);				
+			glEnd();
+			glBegin(GL_LINES);								
+				glVertex2f(73,225);
+				glVertex2f(73,237);				
+			glEnd();
+			glBegin(GL_LINES);								
+				glVertex2f(88,225);
+				glVertex2f(88,258);				
+			glEnd();
+			glBegin(GL_LINES);								
+				glVertex2f(80,225);
+				glVertex2f(80,268);				
+			glEnd();
+			glBegin(GL_LINES);								
+				glVertex2f(90,203);
+				glVertex2f(90,214);				
+			glEnd();
+			glBegin(GL_LINES);								
+				glVertex2f(80,210);
+				glVertex2f(85,194);				
+			glEnd();
+		glPopMatrix();
+}
+void arrow(){
+	glLineWidth(6.0);
+	glPushMatrix();	
+		glColor3ub(255,255,181);
+		glBegin(GL_LINES);
+		glVertex2f(74,209);
+		glVertex2f(76,207);
+		glVertex2f(76,207);
+		glVertex2f(78,209);
+		glEnd();
+		glBegin(GL_LINES);
+		glVertex2f(74,179);
+		glVertex2f(76,177);
+		glVertex2f(76,177);
+		glVertex2f(78,179);
+		glEnd();
+		glBegin(GL_LINES);
+		glVertex2f(74,149);
+		glVertex2f(76,147);
+		glVertex2f(76,147);
+		glVertex2f(78,149);
+		glEnd();
+		glBegin(GL_LINES);
+		glVertex2f(74,119);
+		glVertex2f(76,117);
+		glVertex2f(76,117);
+		glVertex2f(78,119);
+		glEnd();
+		glBegin(GL_LINES);
+		glVertex2f(74,89);
+		glVertex2f(76,87);
+		glVertex2f(76,87);
+		glVertex2f(78,89);
+		glEnd();
+	glPopMatrix();
+}
+void a1(){
+	glLineWidth(5.0);
+	glPushMatrix();
+	glColor3ub(255,255,181);
+		glBegin(GL_LINES);
+		glVertex2f(81,221);
+		glVertex2f(81,217);
+		glVertex2f(80.5,217);
+		glVertex2f(83.5,216);
+		glEnd();
+	glPopMatrix();
+}
+void a2(){
+	glLineWidth(5.0);
+	glPushMatrix();
+	glColor3ub(255,255,181);
+		glBegin(GL_LINES);
+		glVertex2f(75,63);
+		glVertex2f(77,60);
+		glVertex2f(77,60);
+		glVertex2f(75,57);
+		glEnd();
+	glPopMatrix();
+}
+void a1timer(int e){
+	f=f+0.45;
+	if(f>5){
+		f=0;
+	}	
+	glutPostRedisplay();
+	glutTimerFunc(100,a1timer,0);
+}
+void movea(){
+	glPushMatrix();
+	    glTranslatef(0,-g,0);
+		arrow();
+	glPopMatrix();
+	glPushMatrix();
+		glTranslatef(-f,-f,0);
+		a1();
+	glPopMatrix();
+	glPushMatrix();
+		glTranslatef(f,0,0);
+		a2();
+	glPopMatrix();
+}
+void arrowtimer(int e){
+	g=g+1;
+	if(g>25){
+		g=0;
+	}	
+	glutPostRedisplay();
+	glutTimerFunc(50,arrowtimer,0);
+}
+void wind(){
+	glColor3ub(20,200,210);
+		glBegin(GL_LINES);
+			glVertex2f(5+g,240);
+			glVertex2f(10+g,240);
+			glEnd();
+			glBegin(GL_TRIANGLES);
+			glVertex2f(10+g,243);
+			glVertex2f(14+g,240);
+			glVertex2f(10+g,237);
+		glEnd();	
+}
+void genlines(){
+	glLineWidth(1.0);
+	glColor3f(0.0,0.0,0.0);
+		glBegin(GL_LINES);
+		glVertex2f(85,220);
+		glVertex2f(92,220);
+		glEnd();
+}
+//3 f
+void rotatewindmill1(){
+	glTranslatef(c,d,0);
+	glRotatef(z,0,0,1);
+	glTranslatef(-c,-d,0);
+}
+void rotatewindmill2(){
+	glTranslatef(c,d,0);
+	glRotatef(-z,0,0,1);
+	glTranslatef(-c,-d,0);
+}
+void windmilltimer(int e){
+	z=z+b;
+	glutPostRedisplay();
+	glutTimerFunc(100,windmilltimer,0);
+}
+void streetlight(){
+	glPushMatrix();
+		glColor3f(0.0,0.0,0.0);
+		glBegin(GL_POLYGON);
+			glVertex2i(63,60);
+			glVertex2i(67,60);
+			glVertex2i(66,70);
+			glVertex2i(64,70);
+		glEnd();
+		glBegin(GL_POLYGON);
+			glVertex2f(64.5,70);
+			glVertex2f(65.5,70);
+			glVertex2f(65.5,95);
+			glVertex2f(64.5,95);
+		glEnd();
+		glRectf(64.5,95,70,96);
+	glPopMatrix();
+	glPushMatrix();			
+		glBegin(GL_POLYGON);
+		glColor3f(1.0,1.0,1.0);
+			glVertex2f(70,95);
+			glVertex2f(68,93);
+			glVertex2f(68,91);
+			glVertex2f(70,89);
+			glVertex2f(72,91);
+			glVertex2f(72,93);
+		glEnd();			
+		glBegin(GL_POLYGON);
+		glColor3f(0.6,0.4,0.2);
+			glVertex2f(70,96);
+			glVertex2f(67,94);
+			glVertex2f(73,94);
+		glEnd();
+	glPopMatrix();
+}
+
+void streetlightshades(){
+	glPushMatrix();	
+		glColor3f(0,0.3,0);
+		glTranslatef(68,58,0);
+		glScalef(1.0,1.0,0);
+		circles();			
+	glPopMatrix();
+}
+void powerhouse()
+{
+	glPushMatrix();	
+	//windmill powerhouse		
+		glBegin(GL_POLYGON);
+			glColor3f(0.2,0.0,0.5);
+			glVertex2i(15,115);
+			glVertex2i(15,125);
+			glVertex2i(30,125);
+			glVertex2i(30,115);
+		glEnd();
+			glBegin(GL_POLYGON);
+			glColor3f(0.2,0.4,0.5);
+			glVertex2i(30,115);
+			glVertex2i(30,125);
+			glVertex2i(35,132);
+			glVertex2i(35,122);
+		glEnd();
+		
+		glBegin(GL_POLYGON);
+			glColor3f(0.3,0.3,0.6);
+			glVertex2i(15,125);
+			glVertex2i(30,125);
+			glVertex2i(25,135);
+			glVertex2i(21,135);
+		glEnd();
+		glBegin(GL_POLYGON);
+			glColor3f(0.4,0.4,0.5);
+			glVertex2i(30,125);
+			glVertex2i(25,135);
+			glVertex2i(28,137);
+			glVertex2i(35,132);
+		glEnd();
+		glBegin(GL_POLYGON);
+			glColor3f(0.0,0.0,0.0);
+			glVertex2i(21,135);
+			glVertex2i(25,135);
+			glVertex2i(28,137);
+			glVertex2i(24,137);
+		glEnd();
+	glPopMatrix();
+	//powerhouse connecting stand
+	glPushMatrix();
+		glLineWidth(3.0);
+		glColor3f(0.3,0.3,0.3);
+		glBegin(GL_LINES);
+			glVertex2f(23,136);
+			glVertex2f(23,144);
+		glEnd();
+		glBegin(GL_LINES);
+			glVertex2f(26,136);
+			glVertex2f(26,144);
+		glEnd();
+	glPopMatrix();	
+}
+
+void stands(){
+	//electric stand
+	glPushMatrix();
+		glColor3f(0.0,0.0,0.0);
+		glRectf(20.5,70,22.5,110);
+		glRectf(18,110,25,111.5);
+	glPopMatrix();
+	glPushMatrix();
+		glLineWidth(3.0);
+		glColor3f(0.0,0.0,0.0);
+		glBegin(GL_LINES);
+			glVertex2f(19,110);
+			glVertex2f(19,106);						
+		glEnd();
+		glBegin(GL_LINES);
+			glVertex2f(24,110);
+			glVertex2f(24,106);			
+		glEnd();
+	glPopMatrix();
+}
+void wings(){	
+	glPushMatrix();	
+	    glColor3f(0.3,0.3,0.3);
+		glBegin(GL_POLYGON);
+			glVertex2f(150.0,150.0);
+			glVertex2f(145.0,165.0);
+			glColor3f(0.6,0.6,0.6);
+			glVertex2f(150.0,225.0);
+			glVertex2f(155.0,165.0);
+	    glEnd();
+	    glBegin(GL_POLYGON);
+	    glColor3f(0.3,0.3,0.3);
+			glVertex2f(150.0,150.0);
+			glVertex2f(140.0,145.0);
+			glColor3f(0.6,0.6,0.6);
+			glVertex2f(75.0,150.0);
+			glVertex2f(140.0,155.0);
+	    glEnd();
+		glBegin(GL_POLYGON);
+		glColor3f(0.3,0.3,0.3);
+			glVertex2f(150.0,150.0);
+			glVertex2f(155.0,140.0);
+			glColor3f(0.6,0.6,0.6);
+			glVertex2f(150.0,75.0);
+			glVertex2f(145.0,140.0);
+	    glEnd();
+	    glBegin(GL_POLYGON);
+	    glColor3f(0.3,0.3,0.3);
+			glVertex2f(150.0,150.0);
+			glVertex2f(160.0,155.0);
+			glColor3f(0.6,0.6,0.6);
+			glVertex2f(225.0,150.0);
+			glVertex2f(160.0,145.0);
+	    glEnd();
+	glPopMatrix();
+}
+void windmill(){
+	//stand
+    glPushMatrix();
+	    glColor3f(0.3,0.3,0.3);
+		glBegin(GL_POLYGON);
+			glVertex2f(101.5,90.0);
+			glVertex2f(103.0,90.0);
+			glVertex2f(103.0,170.0);
+			glVertex2f(102.0,170.0);
+	    glEnd();
+		glColor3f(0.4,0.4,0.4);
+		glBegin(GL_POLYGON);
+			glVertex2f(104.5,90.0);
+			glVertex2f(103.0,90.0);
+			glVertex2f(103.0,170.0);
+			glVertex2f(104.0,170.0);
+	    glEnd();
+    glPopMatrix();
+    //wings	
+	glPushMatrix();
+		rotatewindmill1();
+		glScalef(0.6,0.6,0);
+		glTranslatef(22,132,0);
+		wings();
+	glPopMatrix();
+    //middlecircles
+    glPushMatrix();
+	    glColor3f(0.25,0.25,0.25);
+	    glTranslatef(103,170,0);
+		glutSolidSphere(2,50,2);
+	glPopMatrix();
+	glPushMatrix();
+	    glColor3f(0.5,0.5,0.5);
+	    glTranslatef(103,170,0);
+		glutSolidSphere(1,50,2);
+	glPopMatrix();
+}
+void intro(){
+	//river
+	glColor3f(0.57,0.57,1.0);
+	glPushMatrix();
+		glBegin(GL_POLYGON);
+		glColor3f(0.9,0.5,0.0);
+		    glVertex2f(0,0);
+		    glColor3f(1.0,0.7,0.3);
+			glVertex2f(0,100);
+			glColor3f(1.0,0.9,0.3);
+			glVertex2f(300,100);
+			glColor3f(1.0,0.7,0.3);
+			glVertex2f(300,0);
+		glEnd();
+	glPopMatrix();
+	//land
+	glPushMatrix();
+		glColor3f(1.0,0.7,0.3);
+		//glColor3f(1.0,0.9,0.5);
+		glBegin(GL_POLYGON);
+			glVertex2i(0,100);
+			glColor3f(0.9,0.5,0.0);
+			glVertex2i(0,200);
+			glVertex2i(300,200);
+			glColor3f(1.0,0.9,0.3);
+			glVertex2i(300,100);
+			glEnd();
+	glPopMatrix();
+	//sky
+	glPushMatrix();
+		glColor3f(0.85,0.85,1.0);
+		glBegin(GL_POLYGON);
+			glVertex2i(0,200);
+			glVertex2i(0,300);
+			glColor3f(0.0,0.5,0.5);
+			glVertex2i(300,300);
+			glColor3f(0.85,0.9,1.0);
+			glVertex2i(300,200);
+		glEnd();
+	glPopMatrix();
+	//mountain
+	glPushMatrix();
+		mountain();
+		glTranslatef(55,0,0);
+		mountain();
+		glTranslatef(55,-1,0);
+		mountain();
+	glPopMatrix();
+    //water body
+    //land3
+	glPushMatrix();
+		glColor4f(0.0,0.85,0.9,0.3);
+		glTranslatef(45,45,0);
+		glScalef(6+0.9,5+0.9,0);
+		circles();
+    glPopMatrix();
+    //trees
+    glPushMatrix();   
+		glTranslatef(-10,12,0); 
+      	glScalef(1,1,0.0);
+		conetree();
+		glTranslatef(-15,2,0);
+		glScalef(0.9,0.9,0.0);
+		conetree();
+		glTranslatef(100,-100,0);
+ 		glScalef(1,1,0.0);
+		conetree();
+		/*glTranslatef(20,50,0);
+		 glScalef(0.9,0.9,0.0);
+		conetree();
+			glTranslatef(10,-30,0);
+		 glScalef(1,1,0.0);
+		conetree();*/
+	glPopMatrix();
+	//windmill
+	glPushMatrix();
+		glTranslatef(140,60,0);
+		windmill0();
+		//glScalef(1.5+0.9,1.5+0.9,0);
+		glTranslatef(25,-40,0);
+		windmill0();
+		glTranslatef(40,40,0);
+		windmill0();
+			glTranslatef(-240,-10,0);
+		windmill0();
+    glPopMatrix();
+    glPushMatrix();
+		glColor3ub(0,0,0);
+		char t1[]="Mangalore Institute of Technology & Engineering, Moodabidre";
+		glRasterPos3i(90,270,0);
+		for (int i=0;i< strlen(t1); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24 , t1[i]);
+		}
+		char t10[]="Department of Computer Science & Engineering";
+		glRasterPos3i(105,250,0);
+		for (int i=0;i< strlen(t10); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24 , t10[i]);
+		}
+		char t2[]="Computer Graphics Visualization of WINDMILL ";
+		glRasterPos3i(105,210,0);
+		for (int i=0;i< strlen(t2); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24 , t2[i]);
+		}
+		char t4[]="BY  ";
+		glRasterPos3i(150,180,0);
+		for (int i=0;i< strlen(t4); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24 , t4[i]);
+		}
+		char t5[]="Name: KAVYASHREE";
+		glRasterPos3i(80,160,0);
+		for (int i=0;i< strlen(t5); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24 , t5[i]);
+		}
+		char t6[]="Name: NANDITHA TV";
+		glRasterPos3i(180,160,0);
+		for (int i=0;i< strlen(t6); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24 , t6[i]);
+		}
+		char t7[]="Usn: 4MT18CS038";
+		glRasterPos3i(80,140,0);
+		for (int i=0;i< strlen(t7); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24 , t7[i]);
+		}
+		char t8[]="Usn: 4MT18CS053";
+		glRasterPos3i(180,140,0);
+		for (int i=0;i< strlen(t8); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24 , t8[i]);
+		}
+		//glColor3ub(0,0,0);
+		char m2[]="Press '>' -  Next Slide.";
+		glRasterPos3i(250,10,0);
+		for (int i=0;i< strlen(m2); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , m2[i]);
+		}
+		char t11[]="Guided by:    JEEVITHA SAMPATH";
+		glRasterPos3i(200,100,0);
+		for (int i=0;i< strlen(t11); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24 , t11[i]);
+			if (i==10){
+				glRasterPos3i(180,85,0);
+			}
+		}
+	glPopMatrix();
+}
+void scene1(){
+	//sky
+	glPushMatrix();
+		glBegin(GL_POLYGON);
+			glColor3f(0.0,0.0,0.0);
+			glVertex2i(0,160);
+			glVertex2i(0,300);
+			glVertex2i(300,300);
+		glColor3f(1.0,0.6,0.1);
+			glVertex2i(300,260);
+			glColor3f(0.8,0.4,0.1);
+			glVertex2i(300,240);
+			glColor3f(0.0,0.0,0.0);
+			glVertex2i(300,160);
+		glEnd();
+	glPopMatrix();
+	//sun
+	glPushMatrix();
+		glColor3f(0.7,0.1,0.0);
+		glTranslatef(235+l,210,0);
+		glutSolidSphere(7,150,200);
+	glPopMatrix();
+	//river
+	glPushMatrix();
+		glBegin(GL_POLYGON);
+		glColor3f(0.0,0.5,0.6);
+		glVertex2f(100.0,0.0);
+		glColor3f(0.0,0.5,0.6);
+		glVertex2f(300.0,150.0);
+		glVertex2f(300.0,0.0);
+	    glEnd();
+    glPopMatrix();
+    //water flow
+    glPushMatrix();
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(-180,-100,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glPopMatrix();  
+    //land
+    glPushMatrix();
+    glColor3f(0.0,0.25,0.0);
+    glBegin(GL_POLYGON);
+	glVertex2f(0.0,0.0);
+	glColor3f(0.0,0.1,0.0);
+	glVertex2f(0.0,160.0);
+	glColor3f(0.0,0.1,0.0);
+	glVertex2f(300.0,160.0);
+	glVertex2f(300.0,120.0);
+	glVertex2f(150.0,0.0);	
+    glEnd();
+    glPopMatrix();
+    //mountains
+    glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(0.0,160.0);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(25.0,220.0);
+	glColor3f(0.0,0.3,0.0);
+	glVertex2f(50.0,160.0);
+    glEnd();
+    glPopMatrix();
+      glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(110.0,160.0);
+	glColor3f(0.7,0.2,0.0);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(135.0,190.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(150.0,160.0);
+    glEnd();
+    glPopMatrix();
+        glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.2,0.0);
+	glVertex2f(50.0,160.0);
+	glColor3f(0.7,0.2,0.0);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(75.0,210.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(135.0,160.0);
+    glEnd();
+    glPopMatrix();
+      glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.3,0.0);
+	glVertex2f(170.0,160.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(195.0,235.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(240.0,160.0);
+    glEnd();
+    glPopMatrix();
+      glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.2,0.0);
+	glVertex2f(135.0,150.0);
+	glColor3f(0.7,0.2,0.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(170.0,220.0);
+	glColor3f(0.0,0.2,0.0);
+	glVertex2f(210.0,160.0);
+    glEnd();
+    glPopMatrix();
+      glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.2,0.0);
+	glVertex2f(190.0,150.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(250.0,230.0);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(300.0,160.0);
+    glEnd();
+    glPopMatrix();	
+ 	//boat
+   glPushMatrix();
+   glTranslatef(-10+x,-50+x,0.0);
+   boat();
+   glPopMatrix();
+   //human
+    glPushMatrix();
+   glTranslatef(-10+x,-52+x,0.0);
+   human();
+   glPopMatrix();
+    //spheretrees  
+    glPushMatrix();
+    glScalef(1.0,1.0,0);
+    spheretree();
+    glTranslatef(26,20,0);
+    spheretree();
+    glTranslatef(35,35,0);
+    spheretree();
+    glTranslatef(15,55,0);
+    glScalef(0.55,0.55,0);
+    spheretree();
+    glTranslatef(-85,55,0);
+    spheretree();
+    glScalef(0.9,0.9,0);
+    glTranslatef(-175,15,0);
+    spheretree();
+    glPopMatrix();
+    //tri tree
+    glPushMatrix();
+      tritree();       
+	  glTranslatef(10,10,0.0);
+      tritree();      
+      glTranslatef(-14,-15,0.0);
+      glScalef(0.95,0.95,0);
+      tritree();
+      //left tree
+      glTranslatef(-145,-10,0.0);
+      glScalef(0.93,0.93,0);
+      tritree();
+      //right tree
+      glTranslatef(-25,-1,0.0);
+      glScalef(0.93,0.93,0);
+      tritree();   
+      glTranslatef(18,65,0.0);
+      glScalef(0.93,0.93,0);
+      tritree();
+    glPopMatrix();
+    //house
+    glPushMatrix();
+    glScalef(1.0,1.0,0.0);
+	house();
+	glTranslatef(50,60,0);
+	house();
+	glScalef(0.95,0.95,0);
+	glTranslatef(60,40,0);
+	house();
+	glScalef(0.9,0.9,0);
+	glTranslatef(-70,5,0);
+	house();
+	glScalef(0.8,0.8,0);
+	glTranslatef(50,40,0);
+	house();
+	glPopMatrix();
+	//farmlayout
+	glPushMatrix();
+	glTranslatef(45,15,0);
+	glScalef(1.25,1.25,0);
+	farmlayout();
+	glPopMatrix();	
+	//busheslayout
+	glPushMatrix();
+	glTranslatef(-25,95,0);
+	glScalef(1.25,1.25,0);
+	busheslayout();
+	glPopMatrix();			
+	char m1[]="VILLAGE BEFORE INSTALLING WINDMILLS ";
+		glColor3ub(255,255,255);
+		glRasterPos3i(20,280,0);
+		for (int i = 0; i < strlen(m1); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , m1[i]);
+	  	}
+	glColor3ub(0,0,0);
+	char m2[]="Press '>' -  Next Slide.";
+		glRasterPos3i(250,10,0);
+		for (int i=0;i< strlen(m2); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , m2[i]);
+		}
+	char m3[]="Press '<' -  Previous Slide.";
+		glRasterPos3i(250,20,0);
+		for (int i=0;i< strlen(m3); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , m3[i]);
+		}
+}
+void scene2(){
+	glColor3ub(164,199,238);
+		glPushMatrix();
+			glBegin(GL_POLYGON);
+			glVertex2f(0,100);
+			glColor3ub(202,235,249);
+			glVertex2f(300,100);			
+			glColor3ub(68,177,235);
+			glVertex2f(300,300);
+			glColor3ub(209,236,250);
+			glVertex2f(0,300);
+			glEnd();
+		glPopMatrix();
+		glPushMatrix();
+			glColor3ub(0,98,0);
+			glTranslatef(70,90,0);
+			glScalef(1.0,1.0,0);
+			sphere();
+			glTranslatef(100,0,0);
+			sphere();
+			glTranslatef(90,0,0);
+			sphere();
+			glColor3ub(2,153,7);
+			glScalef(3.0,1.0,0);
+			glTranslatef(-10,-30,0);
+			sphere();
+		glPopMatrix();
+		glPushMatrix();
+			glBegin(GL_POLYGON);
+			glColor3ub(145,73,15);
+			glVertex2f(0,0);
+			glVertex2f(0,50);
+			glVertex2f(300,50);
+			glVertex2f(300,0);
+			glEnd();
+		glPopMatrix();		
+	   	//line
+	   	glPushMatrix();
+	   		glColor3f(0.0,0.0,0.0);
+	   		glLineWidth(1.0);
+			glBegin(GL_LINES);
+			glVertex2f(0,50);
+			glVertex2f(300,50);
+			glEnd();
+	   	glPopMatrix();
+	   	//foundation
+	   	glPushMatrix();
+	   		glColor3f(0.0,0.0,0.0);
+			glBegin(GL_POLYGON);
+			glVertex2f(58,50);	
+			glVertex2f(92,50);
+			glVertex2f(92,43);
+			glVertex2f(58,43);
+			glEnd();
+	   	glPopMatrix();
+	   	glPushMatrix();
+	   		glColor3f(0.0,0.0,0.0);
+			glBegin(GL_QUADS);
+			glVertex2f(58,43);
+			glVertex2f(92,43);
+			glVertex2f(112,30);
+			glVertex2f(38,30);
+			glEnd();
+	   	glPopMatrix();
+	   	char p1[]="1-FOUNDATION";
+			glColor3ub(0,0,0);
+			glRasterPos3i(100,45,0);
+	  	for (int i = 0; i < strlen(p1); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p1[i]);
+	  	}
+	  	char p3[]="3-TOWER";
+			glColor3ub(0,0,0);
+			glRasterPos3i(80,100,0);
+	  	for (int i = 0; i < strlen(p3); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p3[i]);
+	  	}
+	   	//wm	   	
+	   	glPushMatrix();
+		wm();
+	   	glScalef(0.5,0.5,0);
+	   	glTranslatef(-37,138,0);
+		   wm();
+		glScalef(0.7,0.7,0);
+	   	glTranslatef(305,178,0);
+		   wm();
+		glPopMatrix();
+	   	//parts
+	   	parts();		
+		char p2[]="2-TRANSFORMER";
+			glColor3ub(0,0,0);
+			glRasterPos3i(85,80,0);
+	  	for (int i = 0; i < strlen(p2); i++) {
+	    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , p2[i]);
+	  	}
+	   	//substation
+	   	glPushMatrix();
+	   	substation();
+	   	glPopMatrix();	   	
+	   	//wire
+	   	glPushMatrix();	  
+		glLineWidth(1.0);			
+	   	glColor3f(0.8,0.8,0.8);
+			glBegin(GL_LINES);								
+				glVertex2f(199,183);
+				glVertex2f(241,203);			
+			glEnd();
+		glPopMatrix();
+	   	////tower
+	   	glPushMatrix();
+	   		glTranslatef(-25,-18,0);
+	   		glScalef(1.07,1.15,0);
+	   		tower();
+	   		glScalef(0.7,0.7,0);
+	   		glTranslatef(145,100,0);
+	   		tower();
+	   	glPopMatrix();
+	   	
+	   	//city
+	   	glPushMatrix();
+	   		glColor3ub(0,0,0);
+			glBegin(GL_TRIANGLES);
+			glVertex2f(300,180);
+			glVertex2f(250,190);
+			glVertex2f(300,192);
+			glEnd();
+	   	glPopMatrix();	
+	   	//buildings
+		   	buildings();
+		//WIRES
+		glLineWidth(2.0);
+	   	glColor3f(0.8,0.8,0.8);
+	    glPushMatrix();	    	
+			glBegin(GL_LINES);
+				glVertex2f(103,73);
+				glVertex2f(135,73);
+				glVertex2f(135,135);
+				glVertex2f(135,73);
+				glVertex2f(135,135);
+				glVertex2f(161,135);
+			glEnd();
+		glLineWidth(1.0);	
+			glBegin(GL_LINES);				
+				glVertex2f(184,145);
+				glVertex2f(199,183);
+				glVertex2f(184,144);
+				glVertex2f(205,183);
+				glVertex2f(184,143);
+				glVertex2f(211,183);
+				
+				
+				glVertex2f(208.5,184);
+				glVertex2f(245,203);
+				glVertex2f(211,183);
+				glVertex2f(249,203);
+			glEnd();
+		glLineWidth(0.5);
+			glBegin(GL_LINES);	
+				glVertex2f(243,205);
+				glVertex2f(260,211);			
+				glVertex2f(247,204);
+				glVertex2f(260,210);
+				glVertex2f(249,203);
+				glVertex2f(260,209);
+			glEnd();
+		glPopMatrix();
+		glPushMatrix();
+			if(n==1){
+				char t1[]="Foundation :- The foundation is under the ground for the onshore turbines; it cannot be seen because it is covered by soil. It is a large and heavy structured block of concrete that must hold the whole turbine and the forces that affect it.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(115,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(115,280-(10*j),0);						
+					}
+				}
+			j=0;				
+			}
+			else if(n==2){
+				char t1[]="Transformer :- They act as a link between wind turbines and distribution grid. It steps up the low   output voltage from the generator to higher distribution voltage level.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(115,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(115,280-(10*j),0);						
+					}
+				}
+				j=0;
+			}	
+			else if(n==3){
+				char t1[]="Tower:-The tower in most modern turbines is round tubular steel of a diameter of 10-13 ft, with a    height of 250-370 ft, depending on the size of the turbine and its location. Normally, the taller a turbine is, it is subject to more of the wind with higher speed. This is because the farther we are from the ground, the faster the wind.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(115,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(115,280-(10*j),0);						
+					}
+				}
+				j=0;
+			}
+			else if(n==4){
+				char t1[]="Yaw:-It is the horizontal moving part of the turbine. It turns clockwise or anticlockwise to face the wind. The yaw has two main parts: the yaw motor and the yaw drive. The yaw drive keeps the rotor   facing the wind when the wind direction varies. The yaw motor is used to move the yaw.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(115,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(115,280-(10*j),0);						
+					}
+				}
+				j=0;
+			}
+			else if(n==5){
+				char t1[]="Anemometer:- is a type of sensor that is used to measure the wind speed. The wind speed information  may be necessary for maximum power tracking and protection in emergency cases.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(115,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(115,280-(10*j),0);						
+					}
+				}
+				char t2[]="The wind vane:- is a type of sensor that is used to measure the wind direction. The wind direction   information is important for the yaw control system to operate.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(115,260,0);
+				for (int i = 0; i < strlen(t2); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t2[i]);
+					if(i%100==0 && i!=0){					
+						glRasterPos3i(115,260-(10*j),0);
+						j=j+1;						
+					}
+				}
+				j=0;
+			}	
+			else if(n==6){
+				char t1[]="Generator:-It is the component that converts the mechanical energy from the rotor to electrical      energy. The most common electrical generators used in wind turbines are induction generators (IGs), doubly fed induction generators (DFIGs), and permanent magnet synchronous generators (PMSGs).";
+				glColor3ub(25,25,25);
+				glRasterPos3i(120,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(120,280-(10*j),0);						
+					}
+				}
+				j=0;
+			}	
+			else if(n==7){
+				char t1[]="Gearbox is a mechanical component that is used to increase or decrease the rotational speed. In wind turbines, the gearbox is used to control the rotational speed of the generator.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(120,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(120,280-(10*j),0);						
+					}
+				}
+				j=0;
+			}	
+			else if(n==8){
+				char t1[]="Low-speed shaft:-The low-speed shaft transfers mechanical energy from the rotor to the gearbox.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(120,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(120,280-(10*j),0);						
+					}
+				}
+				j=0;
+			}	
+			else if(n==9){
+				char t1[]="High-speed shaft:-The high-speed shaft transfers mechanical energy from gearbox to generator.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(120,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(120,280-(10*j),0);						
+					}
+				}
+				j=0;
+			}
+			else if(n==10){
+				char t1[]="Hub:-The function of the hub is to hold the blades and make it possible for them to rotate with      respect to the rest of the turbine body.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(120,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(120,280-(10*j),0);						
+					}
+				}
+				j=0;
+			}		
+			else if(n==11){
+				char t1[]="Blades:-They are physical structures, which are aerodynamically optimized to help capture the        maximum power from the wind in normal operation with a wind speed in the range of about 3-15 m/s.   Each blade is usually 20 m or more in length, depending on the power level.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(120,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(120,280-(10*j),0);						
+					}
+				}
+				j=0;
+			}	
+			else if(n==12){
+				char t1[]="Nacelle:Sits at top the tower and contains the gear box, low- and high-speed shafts, generator,      and controller. It protects the turbine's internal components from the surrounding environment.";
+				glColor3ub(25,25,25);
+				glRasterPos3i(120,280,0);
+				for (int i = 0; i < strlen(t1); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+					if(i%100==0 && i!=0){
+						j=j+1;
+						glRasterPos3i(120,280-(10*j),0);						
+					}
+				}
+				j=0;
+			}						    				    		    
+		glPopMatrix();
+		working();
+			char w[]="ENTER -->WORKING";
+				glColor3ub(25,25,25);
+				glRasterPos3i(2,290,0);
+				for (int i = 0; i < strlen(w); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , w[i]);						
+					}
+		//working 	
+		if(m==1){
+			glPushMatrix();
+			movea();
+			wind();
+			glTranslatef(0,-10,0);
+			wind();
+			glTranslatef(0,-15,0);
+			wind();
+			glTranslatef(0,-10,0);
+			wind();
+			char w[]="WIND";
+				glColor3ub(125,25,25);
+				glRasterPos3i(1,259,0);
+				for (int i = 0; i < strlen(w); i++) {
+					glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10 , w[i]);						
+					}
+			glPopMatrix();
+			//inside gen
+		glPushMatrix();
+	   		glColor3ub(100,100,100);
+			glBegin(GL_TRIANGLES);
+			glVertex2f(69,220);	
+			glVertex2f(69,224);
+			glVertex2f(74,222);
+			glEnd();			
+			glColor3f(0.5,0.5,0.5);
+			glBegin(GL_POLYGON);
+			glVertex2f(74,220);	
+			glVertex2f(74,228);
+			glVertex2f(75,228);
+			glVertex2f(75,220);
+			glEnd();
+			glColor3ub(255,101,10);
+			glBegin(GL_POLYGON);
+			glVertex2f(72,217);	
+			glVertex2f(72,227);
+			glVertex2f(74.2,227);
+			glVertex2f(74.2,217);
+			glEnd();
+			glColor3f(0.0,0.0,0.0);
+			glBegin(GL_POLYGON);
+			glVertex2f(75,223);
+			glVertex2f(75,225);
+			glVertex2f(83.5,225);
+			glVertex2f(83.5,223);
+			glEnd();
+			glColor3f(0.0,0.5,1.0);
+			glBegin(GL_POLYGON);
+			glVertex2f(83.5,222);
+			glVertex2f(83.5,226);
+			glVertex2f(85,228);
+			glVertex2f(85,220);
+			glEnd();
+			glColor3f(0.0,0,1.0);
+			glBegin(GL_POLYGON);
+			glVertex2f(85,220);
+			glVertex2f(85,228);
+			glVertex2f(92,228);
+			glVertex2f(92,220);
+			glEnd();
+			glColor3f(0.0,0.5,1.0);
+			glBegin(GL_POLYGON);
+			glVertex2f(92,220);
+			glVertex2f(92,228);
+			glVertex2f(94,226);
+			glVertex2f(94,222);
+			glEnd();
+			for (int i=0;i<=7;i++){
+				glTranslatef(0,1,0);
+				genlines();
+			}
+	   	glPopMatrix();
+		}
+		else if(m==2){
+			glPushMatrix();
+				glTranslatef(29+g,13,0);
+				a2();
+				glTranslatef(30,62,0);
+				a2();			
+			glPopMatrix();
+			glPushMatrix();
+				glTranslatef(19,30+2*g,0);
+				glTranslatef(103,73,0);
+				glRotatef(90,0,0,1);
+				glTranslatef(-103,-73,1);
+				a2();
+			glPopMatrix();
+		}
+		else if(m==3){			
+		glPushMatrix();
+		glLineWidth(4.0);
+	   		glColor3ub(255,255,181);
+	   		glBegin(GL_LINES);
+			glVertex2f(188,140);
+			glVertex2f(200,157);
+			glEnd();
+			glBegin(GL_TRIANGLES);
+			glVertex2f(196,157);
+			glVertex2f(200,157);
+			glVertex2f(199,151);
+			glEnd();
+	   	glPopMatrix();
+		}
+		else if(m==4){
+			glPushMatrix();		
+			glLineWidth(2.0);
+	   		glColor3ub(255,255,181);
+	   		glBegin(GL_LINES);
+			glVertex2f(208,200);
+			glVertex2f(250,215);
+			glEnd();
+			glBegin(GL_TRIANGLES);
+			glVertex2f(249,217);
+			glVertex2f(253,216);
+			glVertex2f(250,213);
+			glEnd();
+	   	glPopMatrix();
+			glPopMatrix();
+		}
+	glColor3ub(0,0,0);
+	char m2[]="Press '>' -  Next Slide.";
+		glRasterPos3i(250,10,0);
+		for (int i=0;i< strlen(m2); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , m2[i]);
+		}
+	char m3[]="Press '<' -  Previous Slide.";
+		glRasterPos3i(250,20,0);
+		for (int i=0;i< strlen(m3); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , m3[i]);
+		}		
+}
+void scene3(){
+	//sky
+			glPushMatrix();
+		glBegin(GL_POLYGON);
+			glColor3f(0.0,0.0,0.0);
+			glVertex2i(0,160);
+			glVertex2i(0,300);
+			glVertex2i(300,300);
+		glColor3f(1.0,0.6,0.1);
+			glVertex2i(300,260);
+			glColor3f(0.8,0.4,0.1);
+			glVertex2i(300,240);
+			glColor3f(0.0,0.0,0.0);
+			glVertex2i(300,160);
+		glEnd();
+	glPopMatrix();
+	//sun
+	glPushMatrix();
+	glColor3f(0.7,0.1,0.0);
+	glTranslatef(235+l,210,0);
+	glutSolidSphere(7,150,200);
+	glPopMatrix();
+	//river
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.5,0.6);
+	glVertex2f(100.0,0.0);
+	glColor3f(0.0,0.5,0.6);
+	glVertex2f(300.0,150.0);
+	glVertex2f(300.0,0.0);
+    glEnd();
+    glPopMatrix();
+    //water flow
+    glPushMatrix();
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(20,10,0);
+    flow();
+    glTranslatef(-180,-100,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glTranslatef(-20,-10,0);
+    flow();
+    glPopMatrix();   
+    //land
+    glPushMatrix();
+    glColor3f(0.0,0.25,0.0);
+    glBegin(GL_POLYGON);
+	glVertex2f(0.0,0.0);
+	glColor3f(0.0,0.1,0.0);
+	glVertex2f(0.0,160.0);
+	glColor3f(0.0,0.1,0.0);
+	glVertex2f(300.0,160.0);
+	glVertex2f(300.0,120.0);
+	glVertex2f(150.0,0.0);	
+    glEnd();
+    glPopMatrix();
+    //mountains
+    glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(0.0,160.0);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(25.0,220.0);
+	glColor3f(0.0,0.3,0.0);
+	glVertex2f(50.0,160.0);
+    glEnd();
+    glPopMatrix();
+      glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(110.0,160.0);
+	glColor3f(0.7,0.2,0.0);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(135.0,190.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(150.0,160.0);
+    glEnd();
+    glPopMatrix();
+        glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.2,0.0);
+	glVertex2f(50.0,160.0);
+	glColor3f(0.7,0.2,0.0);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(75.0,210.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(135.0,160.0);
+    glEnd();
+    glPopMatrix();
+      glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.3,0.0);
+	glVertex2f(170.0,160.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(195.0,235.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(240.0,160.0);
+    glEnd();
+    glPopMatrix();
+      glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.2,0.0);
+	glVertex2f(135.0,150.0);
+	glColor3f(0.7,0.2,0.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(170.0,220.0);
+	glColor3f(0.0,0.2,0.0);
+	glVertex2f(210.0,160.0);
+    glEnd();
+    glPopMatrix();
+      glPushMatrix();
+    glColor3f(0.7,0.2,0.0);
+	glBegin(GL_POLYGON);
+	glColor3f(0.0,0.2,0.0);
+	glVertex2f(190.0,150.0);
+	glColor3f(0.7,0.2,0.0);
+	glVertex2f(250.0,230.0);
+	glColor3f(0.0,0.0,0.0);
+	glVertex2f(300.0,160.0);
+    glEnd();
+    glPopMatrix();	
+ 	//boat
+   glPushMatrix();
+   glTranslatef(-10+x,-50+x,0.0);
+   boat1();
+   glPopMatrix();
+   //human
+    glPushMatrix();
+   glTranslatef(-10+x,-52+x,0.0);
+   human();
+   glPopMatrix();
+   
+//spheretrees   
+    glPushMatrix();
+    glScalef(1.0,1.0,0);
+    spheretree();
+    glTranslatef(26,20,0);
+    spheretree();
+    glTranslatef(35,35,0);
+    spheretree();
+    glTranslatef(15,55,0);
+    glScalef(0.55,0.55,0);
+    spheretree();
+    glTranslatef(-85,55,0);
+    spheretree();
+    glScalef(0.9,0.9,0);
+    glTranslatef(-175,15,0);
+    spheretree();
+    glPopMatrix();
+    //tri tree
+    glPushMatrix();
+      tritree();      
+	  glTranslatef(10,10,0.0);
+      tritree();      
+      glTranslatef(-14,-15,0.0);
+      glScalef(0.95,0.95,0);
+      tritree();
+       //left tree
+      glTranslatef(-132,-10,0.0);
+      glScalef(0.93,0.93,0);
+      tritree();
+      //right tree
+      glTranslatef(-45,-1,0.0);
+      glScalef(0.93,0.93,0);
+      tritree();    
+      glTranslatef(20,60,0.0);
+      glScalef(0.93,0.93,0);
+      tritree();	
+    glPopMatrix();    
+    //windmills
+		glPushMatrix();
+		//	windmill();
+		glPopMatrix();	             
+		glPushMatrix();
+			glScalef(0.7,0.7,0);
+			glTranslatef(-58,133,0);
+			windmill();
+			glTranslatef(95,1,0);
+			windmill();
+			glTranslatef(100,-10,0);
+			windmill();
+			glTranslatef(95,0,0);
+			windmill();
+		glPopMatrix();
+	//street light shades
+	glPushMatrix();			
+		glTranslatef(-51,-8,0);
+		streetlightshades();
+	glPopMatrix();
+	glPushMatrix();	
+		glScalef(0.8,0.8,0);
+		glTranslatef(50,80,0);
+			streetlightshades();
+		glScalef(0.8,0.8,0);
+		glTranslatef(75,50,0);
+			streetlightshades();
+    	glScalef(1.6,1.7,0.0);
+		glTranslatef(5,-75,0);
+			streetlightshades();
+		glScalef(0.8,0.8,0);
+		glTranslatef(70,60,0);
+			streetlightshades();			
+	glPopMatrix();	
+    //house
+    glPushMatrix();
+    glScalef(1.0,1.0,0.0);
+	house();
+	glTranslatef(50,60,0);
+	house();
+	glScalef(0.95,0.95,0);
+	glTranslatef(60,40,0);
+	house();
+	glScalef(0.9,0.9,0);
+	glTranslatef(-70,5,0);
+	house();
+	glScalef(0.8,0.8,0);
+	glTranslatef(50,40,0);
+	house();
+	glPopMatrix();
+	//farmlayout
+	glPushMatrix();
+	glTranslatef(45,15,0);
+	glScalef(1.25,1.25,0);
+	farmlayout();
+	glPopMatrix();	
+	//busheslayout
+	glPushMatrix();
+	glTranslatef(-25,95,0);
+	glScalef(1.25,1.25,0);
+	busheslayout();
+	glPopMatrix();		
+	//street light
+	glPushMatrix();			
+		glTranslatef(-51,-8,0);
+			streetlight();
+	glPopMatrix();
+	glPushMatrix();	
+		glScalef(0.8,0.8,0);
+		glTranslatef(50,80,0);
+			streetlight();
+		glScalef(0.8,0.8,0);
+		glTranslatef(75,50,0);
+			streetlight();
+    	glScalef(1.6,1.7,0.0);
+		glTranslatef(5,-75,0);
+			streetlight();
+		glScalef(0.8,0.8,0);
+		glTranslatef(70,60,0);
+			streetlight();			
+	glPopMatrix();		
+	//powerhouse
+	glPushMatrix();
+		glTranslatef(230,30,0);
+		powerhouse();
+	glPopMatrix();
+	//electricstand
+	glPushMatrix();
+		glTranslatef(200,60,0);
+		stands();
+	glPopMatrix();	
+	//wires from powerhouse
+	glPushMatrix();
+		glLineWidth(2.0);
+		glColor3f(0.1,0.1,0.1);
+		glBegin(GL_LINES);
+			glVertex2f(253,174);
+			glVertex2f(219,166);						
+		glEnd();
+		glBegin(GL_LINES);
+			glVertex2f(256,174);
+			glVertex2f(220,166);						
+		glEnd();
+	glPopMatrix();
+	//wires to streetlights
+	glPushMatrix();
+		glLineWidth(1.0);
+		glColor3f(0.0,0.0,0.0);
+		glBegin(GL_LINES);
+			glVertex2f(222,170);
+			glVertex2f(204,149);
+			glVertex2f(204,149);
+			glVertex2f(159.8,118);	
+			glVertex2f(222,170);
+			glVertex2f(129.8,157);
+			glVertex2f(129.8,157);
+			glVertex2f(92,140);	
+			glVertex2f(92,140);
+			glVertex2f(14,87);			
+		glEnd();
+	glPopMatrix();
+	glPushMatrix();
+			char t1[]="Press the following for rotation in";
+			glColor3ub(255,255,255);
+			glRasterPos3i(20,280,0);
+		  	for (int i = 0; i < strlen(t1); i++) {
+		    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t1[i]);
+		  	}	
+		  	
+		  	char t2[]="a/A - Anti-clockwise direction";
+			glColor3ub(255,255,255);
+			glRasterPos3i(20,270,0);
+		  	for (int i = 0; i < strlen(t2); i++) {
+		    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t2[i]);
+		  	}	
+		  	
+		  	char t3[]="c/C - Clockwise direction";
+			glColor3ub(255,255,255);
+			glRasterPos3i(20,260,0);
+		  	for (int i = 0; i < strlen(t3); i++) {
+		    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t3[i]);
+		  	}	
+		  	
+		  	char t4[]="VILLAGE AFTER INSTALLING WINDMILLS";
+			glColor3ub(255,255,255);
+			glRasterPos3i(150,280,0);
+		  	for (int i = 0; i < strlen(t4); i++) {
+		    	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , t4[i]);
+		  	};
+	glColor3ub(0,0,0);
+	char m2[]="Press '>' -  Exit.";
+		glRasterPos3i(250,10,0);
+		for (int i=0;i< strlen(m2); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , m2[i]);
+		}
+	char m3[]="Press '<' -  Previous Slide.";
+		glRasterPos3i(250,20,0);
+		for (int i=0;i< strlen(m3); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 , m3[i]);
+		}
+}
+
+void special(int sk,int x,int y){
+	switch(sk){
+		case GLUT_KEY_LEFT :s-=1;
+		break;
+		case GLUT_KEY_RIGHT :s+=1;
+		break;
+		
+	}
+	glutPostRedisplay();	
+}
+void display(){
+	glClear(GL_COLOR_BUFFER_BIT);
+	if(s==0){
+		intro();
+	}
+	else if(s==1){
+		scene1();
+	}
+	else if(s==2){
+		scene2();
+	}
+	else if(s==3){
+		scene3();
+	}
+	else if(s==4){
+		exit(0);
+/*		s=0;
+		glutPostRedisplay();*/
+	}
+	else if(s==-1){
+		s=0;
+		glutPostRedisplay();
+	}
+	glFlush();
+	glutSwapBuffers();
+}
+
+int main(int argc,char **argv){
+	printf("hello world");
+	glutInit(&argc,argv);
+	glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
+	glutInitWindowSize(1400,750);
+    glutInitWindowPosition(50,10);
+	glutCreateWindow("Windmill");
+	glClearColor(0.0,0.0,0.0,0.0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glutDisplayFunc(display);
+	glOrtho(0.0,300.0,0.0,300.0,-100.0,100.0);
+	glutSpecialFunc(special);
+	glutDisplayFunc(display);
+	glutKeyboardFunc(key1);
+	rtimer(5);		//2
+	arrowtimer(0);
+	a1timer(0);
+	timer(0.2);		//1
+	timer1(0.2);
+	timer2(0.2);
+	windmilltimer(0);//3
+	glutMainLoop();		
+}
